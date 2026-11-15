@@ -2,11 +2,6 @@ export interface ChatWithModelRequest {
     message: string;
 }
 
-export interface ChatWithModelResponse {
-    model: string;
-    reply: string;
-}
-
 export interface LmStudioChatCompletionResponse {
     id: string;
     model: string;

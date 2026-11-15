@@ -1,11 +1,10 @@
 import { LmStudioConfig } from "../config/LmStudioConfig";
 import {
-    ChatWithModelResponse,
     LmStudioChatCompletionResponse,
 } from "../entity/ChatEntity";
 
 export class ChatBusiness {
-    static async DoChatWithModel(message: string): Promise<ChatWithModelResponse> {
+    static async DoChatWithModel(message: string): Promise<string> {
         const model = LmStudioConfig.model;
 
         const response = await fetch(`${LmStudioConfig.baseUrl}/chat/completions`, {
@@ -28,6 +27,6 @@ export class ChatBusiness {
         const body = (await response.json()) as LmStudioChatCompletionResponse;
         const reply = body.choices?.[0]?.message?.content ?? "";
 
-        return { model: body.model || model, reply };
+        return reply;
     }
 }
